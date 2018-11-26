@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cr_get_modelling_errors module &#8212; crtomo tools 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cr_trig_create module" href="cr_trig_create.html" />
+    <link rel="prev" title="cr_get_analytical_solutions module" href="cr_get_analytical_solutions.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cr_get_modelling_errors">
+<span id="cr-get-modelling-errors-module"></span><h1>cr_get_modelling_errors module<a class="headerlink" href="#module-cr_get_modelling_errors" title="Permalink to this headline">¶</a></h1>
+<p>Plot deviation between CRMod-derived apparent resistivities and analytical
+resistivity vs K-factors. Also save the relative deviations to a .dat file.</p>
+<p>dev = (R_mod * K - rho0) / rho0</p>
+<ul class="simple">
+<li>R_mod - modelled resistance value (using CRMod)</li>
+<li>K - geometric factor over a homogeneous half-space, computed using the
+analytical formula</li>
+<li>rho0: resistivity of homogeneous half-space</li>
+</ul>
+<div class="section" id="output-files">
+<h2>Output files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h2>
+<p>OUTPUT.png: plot K vs. rel. modelling errors</p>
+<dl class="docutils">
+<dt>OUTPUT.dat: Nx2 array, first column: analytical K factors,</dt>
+<dd>second column: rel. modelling errors</dd>
+</dl>
+</div>
+<div class="section" id="usage-example">
+<h2>Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<p>cr_get_modelling_errors.py –elem grid1/elem.dat –elec grid1/elec.dat        –config grid1/config.dat -o grid1_modelling_error.png</p>
+<dl class="function">
+<dt id="cr_get_modelling_errors.compute_K_factors">
+<code class="descclassname">cr_get_modelling_errors.</code><code class="descname">compute_K_factors</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#cr_get_modelling_errors.compute_K_factors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cr_get_modelling_errors.get_R_mod">
+<code class="descclassname">cr_get_modelling_errors.</code><code class="descname">get_R_mod</code><span class="sig-paren">(</span><em>options</em>, <em>rho0</em><span class="sig-paren">)</span><a class="headerlink" href="#cr_get_modelling_errors.get_R_mod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute synthetic measurements over a homogeneous half-space</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cr_get_modelling_errors.handle_cmd_options">
+<code class="descclassname">cr_get_modelling_errors.</code><code class="descname">handle_cmd_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cr_get_modelling_errors.handle_cmd_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cr_get_modelling_errors.main">
+<code class="descclassname">cr_get_modelling_errors.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cr_get_modelling_errors.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cr_get_modelling_errors.plot_and_save_deviations">
+<code class="descclassname">cr_get_modelling_errors.</code><code class="descname">plot_and_save_deviations</code><span class="sig-paren">(</span><em>rho0</em>, <em>rho_mod</em>, <em>Kfactors</em>, <em>filename</em>, <em>configs</em><span class="sig-paren">)</span><a class="headerlink" href="#cr_get_modelling_errors.plot_and_save_deviations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">crtomo tools</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html">Examples for crtomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html#examples-grid-handling">Examples: Grid handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html#examples-modelling">Examples: Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html#examples-postprocessing-of-inversion-results">Examples: Postprocessing of inversion results</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cr_get_analytical_solutions.html">cr_get_analytical_solutions module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cr_get_modelling_errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cr_trig_create.html">cr_trig_create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cr_trig_parse_gmsh.html">cr_trig_parse_gmsh module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_extralines_gen_decouplings.html">grid_extralines_gen_decouplings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_gen_decouplings.html">grid_gen_decouplings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_gen_depth_decoupling.html">grid_gen_depth_decoupling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_homogenize.html">grid_homogenize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_plot_elem_angles.html">grid_plot_elem_angles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_plot_wireframe.html">grid_plot_wireframe module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_rotate.html">grid_rotate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_translate.html">grid_translate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_translate_model.html">grid_translate_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sd_plot.html">sd_plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sens_center_plot.html">sens_center_plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_clean.html">td_clean module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_correct_temperature.html">td_correct_temperature module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_init.html">td_init module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_plot.html">td_plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_residuals.html">td_residuals module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_run_all_local.html">td_run_all_local module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_test.html">td_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volt_correct_temperature.html">volt_correct_temperature module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volt_histogram.html">volt_histogram module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">lib</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="cr_get_analytical_solutions.html" title="previous chapter">cr_get_analytical_solutions module</a></li>
+      <li>Next: <a href="cr_trig_create.html" title="next chapter">cr_trig_create module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/scripts/grid_tools/cr_get_modelling_errors.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

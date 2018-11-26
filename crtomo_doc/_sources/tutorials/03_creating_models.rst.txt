@@ -1,0 +1,90 @@
+Creating synthetic models
+-------------------------
+
+Create a grid, e.g., using the helper function of the `crtomo.grid` module: ::
+
+    import crtomo.grid as CRGrid
+    grid = CRGrid.crt_grid.create_surface_grid(
+        nr_electrodes=30, spacing=1
+    )
+
+Now create a tomo manager instance to manage parameter sets ::
+
+    import crtomo.tdManager as CRman
+    man = CRman.tdMan(grid=grid)
+
+Then, create two new parameter sets, one for the magnitudes, one for the phase
+values: ::
+
+    pid_mag, pid_pha = man.add_homogeneous_model(magnitude=100, phase=-5)
+
+.. note::
+
+    If you are only interested in the magnitude model, leave the phase at zero
+
+.. note::
+
+    You can alternatively load a rho.dat file, as used by CRTomo using ::
+
+        pid_mag, pid_pha = man.load_rho_file('rho.dat')
+
+Modify the one parmeter set at a time using one of the modifying functions: ::
+
+    man.parman.modify_area(
+        pid_mag,
+        xmin=1, xmax=5,
+        zmin=-3, zmax=-2,
+        value=10
+    )
+
+    man.parman.modify_area(
+        pid_pha,
+        xmin=1, xmax=5,
+        zmin=-3, zmax=-2,
+        value=-30
+    )
+
+
+Parameter sets can be plotted using the plot manager: ::
+
+    result_mag = man.plot.plot_elements_to_ax(
+        pid_mag,
+        plot_colorbar=True,
+    )
+    fig = result_mag[0]
+    fig.savefig('model_mag.png', dpi=300)
+
+    result_pha = man.plot.plot_elements_to_ax(
+        pid_pha,
+        plot_colorbar=True,
+    )
+    fig = result_pha[0]
+    fig.savefig('model_pha.png', dpi=300)
+
+
+.. plot::
+
+    import crtomo.grid as CRGrid
+    grid = CRGrid.crt_grid.create_surface_grid(
+        nr_electrodes=30, spacing=1
+    )
+    import crtomo.tdManager as CRman
+    man = CRman.tdMan(grid=grid)
+    pid_mag, pid_pha = man.add_homogeneous_model(magnitude=100, phase=-5)
+    man.parman.modify_area(
+        pid_mag, 1, 5, -5, -2, value=10
+    )
+    r = man.plot.plot_elements_to_ax(
+        pid_mag,
+        plot_colorbar=True,
+        cblabel=r'$\rho~[\Omega m]$',
+    )
+    fig = r[0]
+    # fig.savefig('model_mag.png', dpi=300)
+
+    r = man.plot.plot_elements_to_ax(
+        pid_pha,
+        plot_colorbar=True,
+        cblabel=r'$\phi~[mrad]$',
+    )
+

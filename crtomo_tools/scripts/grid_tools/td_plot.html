@@ -1,0 +1,306 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>td_plot module &#8212; crtomo tools 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="td_residuals module" href="td_residuals.html" />
+    <link rel="prev" title="td_init module" href="td_init.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-td_plot">
+<span id="td-plot-module"></span><h1>td_plot module<a class="headerlink" href="#module-td_plot" title="Permalink to this headline">¶</a></h1>
+<p>Tool to plot inversion results of tomodir. Included data is
+* magnitude
+* coverage
+* phase
+* phase of FPI
+* real part
+* real part of FPI
+* imaginary part
+* imaginary part of FPI</p>
+<p>The three main options are to plot everything in one figure, to plot individual
+figures (–single) or to plot anisotropic results of magnitude and phase
+(–aniso).
+The script has to be run in a tomodir. Output file will be saved in tomodir.</p>
+<dl class="function">
+<dt id="td_plot.alpha_from_cov">
+<code class="descclassname">td_plot.</code><code class="descname">alpha_from_cov</code><span class="sig-paren">(</span><em>plotman</em>, <em>alpha_cov</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.alpha_from_cov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate alpha values from the coverage/2.5.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.calc_complex">
+<code class="descclassname">td_plot.</code><code class="descname">calc_complex</code><span class="sig-paren">(</span><em>mag</em>, <em>pha</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.calc_complex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate real and imaginary part of the complex conductivity from
+magnitude and phase in log10.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.check_minmax">
+<code class="descclassname">td_plot.</code><code class="descname">check_minmax</code><span class="sig-paren">(</span><em>plotman</em>, <em>cid</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>vmin</em>, <em>vmax</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.check_minmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get min and max values for axes and colorbar if not given</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_anisomagplot">
+<code class="descclassname">td_plot.</code><code class="descname">create_anisomagplot</code><span class="sig-paren">(</span><em>plotman</em>, <em>x</em>, <em>y</em>, <em>z</em>, <em>alpha</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_anisomagplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data of the tomodir in one overview plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_anisophaplot">
+<code class="descclassname">td_plot.</code><code class="descname">create_anisophaplot</code><span class="sig-paren">(</span><em>plotman</em>, <em>x</em>, <em>y</em>, <em>z</em>, <em>alpha</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_anisophaplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data of the tomodir in one overview plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_fpiplots">
+<code class="descclassname">td_plot.</code><code class="descname">create_fpiplots</code><span class="sig-paren">(</span><em>plotman</em>, <em>ax</em>, <em>mag</em>, <em>pha_fpi</em>, <em>options</em>, <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_fpiplots" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_hlammagplot">
+<code class="descclassname">td_plot.</code><code class="descname">create_hlammagplot</code><span class="sig-paren">(</span><em>plotman</em>, <em>h</em>, <em>ratio</em>, <em>alpha</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_hlammagplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data of the tomodir in one overview plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_hlamphaplot">
+<code class="descclassname">td_plot.</code><code class="descname">create_hlamphaplot</code><span class="sig-paren">(</span><em>plotman</em>, <em>h</em>, <em>v</em>, <em>alpha</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_hlamphaplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data of the tomodir in one overview plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_non_dcplots">
+<code class="descclassname">td_plot.</code><code class="descname">create_non_dcplots</code><span class="sig-paren">(</span><em>plotman</em>, <em>ax</em>, <em>mag</em>, <em>pha</em>, <em>options</em>, <em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_non_dcplots" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_singleplots">
+<code class="descclassname">td_plot.</code><code class="descname">create_singleplots</code><span class="sig-paren">(</span><em>plotman</em>, <em>cov</em>, <em>mag</em>, <em>pha</em>, <em>pha_fpi</em>, <em>alpha</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_singleplots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data of the tomodir in individual plots.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.create_tdplot">
+<code class="descclassname">td_plot.</code><code class="descname">create_tdplot</code><span class="sig-paren">(</span><em>plotman</em>, <em>cov</em>, <em>mag</em>, <em>pha</em>, <em>pha_fpi</em>, <em>alpha</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.create_tdplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the data of the tomodir in one overview plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.getfigsize">
+<code class="descclassname">td_plot.</code><code class="descname">getfigsize</code><span class="sig-paren">(</span><em>plotman</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.getfigsize" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate appropriate sizes for the subfigures</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.handle_options">
+<code class="descclassname">td_plot.</code><code class="descname">handle_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.handle_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.list_datafiles">
+<code class="descclassname">td_plot.</code><code class="descname">list_datafiles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.list_datafiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the type of the tomodir and the highest iteration to list all files,
+which will be plotted.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.load_cov">
+<code class="descclassname">td_plot.</code><code class="descname">load_cov</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.load_cov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a datafile with coverage file structure.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.load_rho">
+<code class="descclassname">td_plot.</code><code class="descname">load_rho</code><span class="sig-paren">(</span><em>name</em>, <em>column</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.load_rho" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a datafile with rho structure like mag and phase</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.main">
+<code class="descclassname">td_plot.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="td_plot.plot_cov">
+<code class="descclassname">td_plot.</code><code class="descname">plot_cov</code><span class="sig-paren">(</span><em>cid</em>, <em>ax</em>, <em>plotman</em>, <em>title</em>, <em>vmin</em>, <em>vmax</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>xunit</em>, <em>cbtiks</em>, <em>elecs</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.plot_cov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot coverage of the complex resistivity using the cov_options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.plot_imag">
+<code class="descclassname">td_plot.</code><code class="descname">plot_imag</code><span class="sig-paren">(</span><em>cid</em>, <em>ax</em>, <em>plotman</em>, <em>title</em>, <em>alpha</em>, <em>vmin</em>, <em>vmax</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>xunit</em>, <em>cbtiks</em>, <em>elecs</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.plot_imag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot imag parts of the complex conductivity using the imag_options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.plot_mag">
+<code class="descclassname">td_plot.</code><code class="descname">plot_mag</code><span class="sig-paren">(</span><em>cid</em>, <em>ax</em>, <em>plotman</em>, <em>title</em>, <em>unit</em>, <em>alpha</em>, <em>vmin</em>, <em>vmax</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>xunit</em>, <em>cbtiks</em>, <em>elecs</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.plot_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot magnitude of the complex resistivity using the mag_options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.plot_pha">
+<code class="descclassname">td_plot.</code><code class="descname">plot_pha</code><span class="sig-paren">(</span><em>cid</em>, <em>ax</em>, <em>plotman</em>, <em>title</em>, <em>alpha</em>, <em>vmin</em>, <em>vmax</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>xunit</em>, <em>cbtiks</em>, <em>elecs</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.plot_pha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot phase of the complex resistivity using the pha_options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.plot_ratio">
+<code class="descclassname">td_plot.</code><code class="descname">plot_ratio</code><span class="sig-paren">(</span><em>cid</em>, <em>ax</em>, <em>plotman</em>, <em>title</em>, <em>alpha</em>, <em>vmin</em>, <em>vmax</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>xunit</em>, <em>cbtiks</em>, <em>elecs</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.plot_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot ratio of two conductivity directions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.plot_real">
+<code class="descclassname">td_plot.</code><code class="descname">plot_real</code><span class="sig-paren">(</span><em>cid</em>, <em>ax</em>, <em>plotman</em>, <em>title</em>, <em>alpha</em>, <em>vmin</em>, <em>vmax</em>, <em>xmin</em>, <em>xmax</em>, <em>zmin</em>, <em>zmax</em>, <em>xunit</em>, <em>cbtiks</em>, <em>elecs</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.plot_real" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot real parts of the complex conductivity using the real_options.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.read_datafiles">
+<code class="descclassname">td_plot.</code><code class="descname">read_datafiles</code><span class="sig-paren">(</span><em>files</em>, <em>dtype</em>, <em>column</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.read_datafiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the datafiles and return cov, mag, phase and fpi phase values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.read_iter">
+<code class="descclassname">td_plot.</code><code class="descname">read_iter</code><span class="sig-paren">(</span><em>use_fpi</em><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.read_iter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the final .mag file either for the complex or the fpi
+inversion.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="td_plot.td_type">
+<code class="descclassname">td_plot.</code><code class="descname">td_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#td_plot.td_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>get type of the tomodir (complex or dc and whether fpi)</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">crtomo tools</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html">Examples for crtomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html#examples-grid-handling">Examples: Grid handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html#examples-modelling">Examples: Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_examples/index.html#examples-postprocessing-of-inversion-results">Examples: Postprocessing of inversion results</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cr_get_analytical_solutions.html">cr_get_analytical_solutions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cr_get_modelling_errors.html">cr_get_modelling_errors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cr_trig_create.html">cr_trig_create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cr_trig_parse_gmsh.html">cr_trig_parse_gmsh module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_extralines_gen_decouplings.html">grid_extralines_gen_decouplings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_gen_decouplings.html">grid_gen_decouplings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_gen_depth_decoupling.html">grid_gen_depth_decoupling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_homogenize.html">grid_homogenize module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_plot_elem_angles.html">grid_plot_elem_angles module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_plot_wireframe.html">grid_plot_wireframe module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_rotate.html">grid_rotate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_translate.html">grid_translate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_translate_model.html">grid_translate_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sd_plot.html">sd_plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sens_center_plot.html">sens_center_plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_clean.html">td_clean module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_correct_temperature.html">td_correct_temperature module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_init.html">td_init module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">td_plot module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_residuals.html">td_residuals module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_run_all_local.html">td_run_all_local module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="td_test.html">td_test module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volt_correct_temperature.html">volt_correct_temperature module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="volt_histogram.html">volt_histogram module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">lib</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="td_init.html" title="previous chapter">td_init module</a></li>
+      <li>Next: <a href="td_residuals.html" title="next chapter">td_residuals module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/scripts/grid_tools/td_plot.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,59 @@
+Creating measurement configurations
+-----------------------------------
+
+There are two possible ways to create measurement configurations. Common to
+them is a `crtomo.configManager` instance. It can either be created directory,
+or implicitely through the creation of a `crtomo.tdManager` instance. This
+tutorial will create a stand-alone instance of the configManager, but for a
+given tdMan-instance 'man', the config Manager can be found at `man.configs`.
+
+Create the configManager: ::
+
+    import crtomo.configManager as edfC
+    configs = edfC.ConfigManager(nr_of_electrodes=48)
+
+Configs can now be created using one of the following functions: ::
+
+    configs.gen_dipole_dipole
+    configs.gen_gradient
+    configs.gen_reciprocals
+    configs.gen_schlumberger
+    configs.gen_wenner
+
+For the full documentation of these function, please refer to the code
+documentation of each of them.
+
+A few examples: ::
+
+    configs.gen_dipole_dipole(skipc=2)
+    configs.gen_gradient(skip=10, vskip=0)
+
+The configurations are returned by the functions as a Nx4 numpy array, but are
+also directly added to the internal configuration array, which can be accessed
+as: ::
+
+    configs.configs
+
+.. todo::
+
+    Explain the additional configuration functions, e.g., reciprocals, etc.
+
+.. todo::
+
+    Explain how to plot pseudosections
+
+There are various ways to save the configurations into a file:
+
+A four-column file is written using: ::
+
+    configs.write_configs('configs.dat')
+
+A CRMod config.dat file is written using: ::
+
+    configs.write_crmod_config('config.dat')
+
+A CRMod volt.dat file is written using: ::
+
+    configs.write_crmod_config('config.dat', mid)
+
+Here, mid refers to the measurement-id for a given measurement.

@@ -1,0 +1,333 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Repositories &#8212; CRTomo user manual 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CRTomo_tools" href="../crtomo_tools/crtomo_tools.html" />
+    <link rel="prev" title="Developer information" href="../developers.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="repositories">
+<h1>Repositories<a class="headerlink" href="#repositories" title="Permalink to this headline">¶</a></h1>
+<p>For internal projects, use out Gitlab-server:
+<a class="reference external" href="https://gitlab.geo.uni-bonn.de:4443/users/sign_in">https://gitlab.geo.uni-bonn.de:4443/users/sign_in</a></p>
+</div>
+<div class="section" id="python-requirements">
+<h1>Python requirements<a class="headerlink" href="#python-requirements" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>We use Python 3.X for development.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="virtualenvs-virtualenv-wrapper">
+<h1>Virtualenvs/Virtualenv-wrapper<a class="headerlink" href="#virtualenvs-virtualenv-wrapper" title="Permalink to this headline">¶</a></h1>
+<p>Introduce yourself to virtualenv-wrapper, learn the basic handling.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://virtualenvwrapper.readthedocs.io/en/latest/">https://virtualenvwrapper.readthedocs.io/en/latest/</a></li>
+<li>(for reference <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">https://virtualenv.pypa.io/en/stable/</a>)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="git-requirements">
+<h1>Git requirements<a class="headerlink" href="#git-requirements" title="Permalink to this headline">¶</a></h1>
+<p>Understand, and use, the following git commands:</p>
+<blockquote>
+<div><ul class="simple">
+<li>git clone</li>
+<li>git pull / git push</li>
+<li>git add</li>
+<li>git commit</li>
+<li>git branch</li>
+<li>git checkout</li>
+<li>git merge</li>
+</ul>
+</div></blockquote>
+<div class="section" id="git-literature">
+<h2>Git Literature<a class="headerlink" href="#git-literature" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></li>
+<li><a class="reference external" href="http://git-scm.com/book">http://git-scm.com/book</a></li>
+<li><a class="reference external" href="http://www.ralfebert.de/tutorials/git/">http://www.ralfebert.de/tutorials/git/</a></li>
+<li><a class="reference external" href="http://www-cs-students.stanford.edu/~blynn/gitmagic/">http://www-cs-students.stanford.edu/~blynn/gitmagic/</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="software-development-using-python">
+<h1>Software Development using Python<a class="headerlink" href="#software-development-using-python" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul>
+<li><p class="first">Use setuptools to create an installation routine
+(<a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html">https://setuptools.readthedocs.io/en/latest/setuptools.html</a>)</p>
+</li>
+<li><p class="first">Python Koans: <a class="reference external" href="https://github.com/gregmalcolm/python_koans">https://github.com/gregmalcolm/python_koans</a></p>
+</li>
+<li><p class="first">Never, ever, overwrite data in variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># DO NOT</span>
+<span class="c1"># data = data + 1.53</span>
+
+<span class="c1"># instead create a new variable</span>
+<span class="n">data_w_offset</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="mf">1.53</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use GIT for all software projects, even small ones!</p>
+</li>
+<li><p class="first">Generated data usually does NOT belong into git repositories.</p>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Put scripts to generate the data into the GIT rep.</li>
+<li>git-annex can be used to manage large data files in git-repositories:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://git-annex.branchable.com/">http://git-annex.branchable.com/</a></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li>Use Python 3.4 or newer</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Make use of the ipython notebook (<a class="reference external" href="http://ipython.org/documentation.html">http://ipython.org/documentation.html</a>)</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Follow the PEP8 style guide (<a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">http://www.python.org/dev/peps/pep-0008/</a>)</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>The program ‘pep8’ checks .py files for pep8-errors (apt-get install pep8)</li>
+<li>Use 4 spaces instead of TAB (can be set in most editors, otherwise: use
+another editor)</li>
+<li>maximum 79 characters per line</li>
+<li>Each executable script should start with “!#/usr/bin/python”</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>make executable with “chmod +x SCRIPT.py”</li>
+<li>execute with ./SCRIPT.py</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li>Bookmark the documentations for the following packages (local version can
+often be found in /usr/share/doc/python-XXX)</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Python (<a class="reference external" href="http://docs.python.org/2/">http://docs.python.org/2/</a>)</li>
+<li>IPython (<a class="reference external" href="http://ipython.org/documentation.html">http://ipython.org/documentation.html</a>)</li>
+<li>Matplotlib (<a class="reference external" href="http://matplotlib.org/contents.html">http://matplotlib.org/contents.html</a>)</li>
+<li>Numpy (<a class="reference external" href="http://docs.scipy.org/doc/">http://docs.scipy.org/doc/</a>)</li>
+<li>Scipy (<a class="reference external" href="http://docs.scipy.org/doc/">http://docs.scipy.org/doc/</a>)</li>
+<li>Pandas (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">http://pandas.pydata.org/pandas-docs/stable/</a>)</li>
+<li>Nosetests (<a class="reference external" href="https://nose.readthedocs.org/en/latest/">https://nose.readthedocs.org/en/latest/</a>)</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Decide on the project language in the beginning and stick to it!</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>English is the preferred language to comment and document your software</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Create working examples for your software in a ‘examples/’ subdirectory.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>These examples are directed to new users who want to learn how to use the
+software in general or how to use specific features.</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Create working test cases for your software in a ‘tests/’ subdirectory.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Tests should cover most of the features (large and small)</li>
+<li>Tests can be automated using ‘nosetests’
+<a class="reference external" href="https://nose.readthedocs.org/en/latest/">https://nose.readthedocs.org/en/latest/</a></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Create a documentation subdirectory ‘docs’ right at the beginning</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Use ‘sphinx’ (<a class="reference external" href="http://sphinx-doc.org/">http://sphinx-doc.org/</a>) for the documentation</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://sphinx-doc.org/tutorial.html">http://sphinx-doc.org/tutorial.html</a></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Document all functions</li>
+<li>Documentating early and extensive has multiple advantages</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Re-use text for publications/thesis</li>
+<li>Structure the development phase</li>
+<li>A central place to store notes and todos</li>
+<li>sections to include in your documentation:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Installation</li>
+<li>Quick start guide</li>
+<li>Usage</li>
+<li>Implemented formulas</li>
+<li>TODO-List</li>
+<li>Literature (include links to PDF files if available), put PDF files in a
+directoy ‘literature’</li>
+<li>Design-sketches (flow-charts)</li>
+<li>Code (can be automatically included by sphinx)</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>A ‘docs’ subdirectory could have the following subdirectories:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>literature/ &lt;- put PDF  files in here</li>
+<li>doc/   &lt;- put sphinxs documentation in here</li>
+<li>&lt;- add new subdirectories for all notes and additional documentation</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<ul class="simple">
+<li>Create only small functions (~1 screen page long) with only one purpose</li>
+<li>NEVER ever start your variables with “my”!</li>
+<li>Plan your program on paper before you start to write code</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Use pseudocode</li>
+<li>Flow-charts really help to understand the problem</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>If possible give the code to a colleage in regular intervals for a code
+review</li>
+<li>See <a class="reference external" href="http://infinitemonkeycorps.net/docs/pph/">http://infinitemonkeycorps.net/docs/pph/</a> for a whole tutorial on Python
+project management</li>
+</ul>
+</div></blockquote>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CRTomo user manual</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo/crtomo.html">CRTomo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../developers.html">Developer information</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-requirements">Python requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#virtualenvs-virtualenv-wrapper">Virtualenvs/Virtualenv-wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-requirements">Git requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-development-using-python">Software Development using Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../developers.html">Developer information</a><ul>
+      <li>Previous: <a href="../developers.html" title="previous chapter">Developer information</a></li>
+      <li>Next: <a href="../crtomo_tools/crtomo_tools.html" title="next chapter">CRTomo_tools</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../_sources/misc/style_guide.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

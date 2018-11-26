@@ -1,0 +1,8 @@
+td\_init module
+===============
+
+.. automodule:: td_init
+    :members:
+    :private-members:
+    :undoc-members:
+    :show-inheritance:

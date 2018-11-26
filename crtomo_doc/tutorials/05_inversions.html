@@ -1,0 +1,176 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Inversion using the tdManager &#8212; CRTomo user manual 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developer information" href="../developers.html" />
+    <link rel="prev" title="Forward modelling" href="04_forward_modelling.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="inversion-using-the-tdmanager">
+<h1>Inversion using the tdManager<a class="headerlink" href="#inversion-using-the-tdmanager" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crtomo.grid</span> <span class="k">as</span> <span class="nn">CRGrid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">CRGrid</span><span class="o">.</span><span class="n">crt_grid</span><span class="o">.</span><span class="n">create_surface_grid</span><span class="p">(</span>
+    <span class="n">nr_electrodes</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">crtomo.tdManager</span> <span class="k">as</span> <span class="nn">CRman</span>
+<span class="n">man</span> <span class="o">=</span> <span class="n">CRman</span><span class="o">.</span><span class="n">tdMan</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">)</span>
+<span class="n">pid_mag</span><span class="p">,</span> <span class="n">pid_pha</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">add_homogeneous_model</span><span class="p">(</span><span class="n">magnitude</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">phase</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">man</span><span class="o">.</span><span class="n">parman</span><span class="o">.</span><span class="n">modify_area</span><span class="p">(</span><span class="n">pid_mag</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">plotman</span><span class="o">.</span><span class="n">plot_elements_to_ax</span><span class="p">(</span>
+    <span class="n">pid_mag</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Forward model&#39;</span><span class="p">,</span>
+    <span class="n">plot_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cblabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$|\rho|~[\Omega m]$&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;model_mag.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">plotman</span><span class="o">.</span><span class="n">plot_elements_to_ax</span><span class="p">(</span>
+    <span class="n">pid_pha</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Forward model&#39;</span><span class="p">,</span>
+    <span class="n">plot_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cblabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\phi~[mrad]$&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;model_mag.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">gen_dipole_dipole</span><span class="p">(</span><span class="n">skipc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rmag_rpha</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">measurements</span><span class="p">()</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">compute_K_factors</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rhoa</span> <span class="o">=</span> <span class="n">rmag_rpha</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span>
+<span class="n">cid_rho</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">rhoa</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">plot_pseudosection_type2</span><span class="p">(</span>
+    <span class="n">cid_rho</span><span class="p">,</span>
+    <span class="n">cblabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\rho_a~[\Omega m]$&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">maglog</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">rmag_rpha</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">cid</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">add_measurements</span><span class="p">(</span><span class="n">maglog</span><span class="p">)</span>
+<span class="n">mid_mag</span><span class="p">,</span> <span class="n">mid_pha</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">assignments</span><span class="p">[</span><span class="s1">&#39;measurements&#39;</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">plot_pseudosection_type2</span><span class="p">(</span>
+    <span class="n">mid_mag</span><span class="p">,</span>
+    <span class="n">cblabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$|Z|~[\Omega]$&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;pseudosection_mag.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">plot_pseudosection_type2</span><span class="p">(</span>
+    <span class="n">maglog</span><span class="p">,</span>
+    <span class="n">cblabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$log_</span><span class="si">{10}</span><span class="s1">(|Z|~[\Omega])$&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">man</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">output_directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">catch_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">eps_data</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">_read_eps_ctr</span><span class="p">(</span><span class="s1">&#39;inversion/&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">man</span><span class="o">.</span><span class="n">plot_eps_data</span><span class="p">(</span><span class="n">eps_data</span><span class="p">)</span>
+<span class="n">man</span><span class="o">.</span><span class="n">plot_eps_data_hist</span><span class="p">(</span><span class="n">eps_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../tutorials/05_inversions-1.py">Source code</a>)</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CRTomo user manual</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../misc/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo/crtomo.html">CRTomo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_data_management.html">Data Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_measurement_configurations.html">Creating measurement configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_creating_models.html">Creating synthetic models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_forward_modelling.html">Forward modelling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Inversion using the tdManager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developer information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorials.html">Tutorials</a><ul>
+      <li>Previous: <a href="04_forward_modelling.html" title="previous chapter">Forward modelling</a></li>
+      <li>Next: <a href="../developers.html" title="next chapter">Developer information</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../_sources/tutorials/05_inversions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Creating measurement configurations &#8212; CRTomo user manual 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating synthetic models" href="03_creating_models.html" />
+    <link rel="prev" title="Data Management" href="00_data_management.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="creating-measurement-configurations">
+<h1>Creating measurement configurations<a class="headerlink" href="#creating-measurement-configurations" title="Permalink to this headline">¶</a></h1>
+<p>There are two possible ways to create measurement configurations. Common to
+them is a <cite>crtomo.configManager</cite> instance. It can either be created directory,
+or implicitely through the creation of a <cite>crtomo.tdManager</cite> instance. This
+tutorial will create a stand-alone instance of the configManager, but for a
+given tdMan-instance ‘man’, the config Manager can be found at <cite>man.configs</cite>.</p>
+<p>Create the configManager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crtomo.configManager</span> <span class="k">as</span> <span class="nn">edfC</span>
+<span class="n">configs</span> <span class="o">=</span> <span class="n">edfC</span><span class="o">.</span><span class="n">ConfigManager</span><span class="p">(</span><span class="n">nr_of_electrodes</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Configs can now be created using one of the following functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span><span class="o">.</span><span class="n">gen_dipole_dipole</span>
+<span class="n">configs</span><span class="o">.</span><span class="n">gen_gradient</span>
+<span class="n">configs</span><span class="o">.</span><span class="n">gen_reciprocals</span>
+<span class="n">configs</span><span class="o">.</span><span class="n">gen_schlumberger</span>
+<span class="n">configs</span><span class="o">.</span><span class="n">gen_wenner</span>
+</pre></div>
+</div>
+<p>For the full documentation of these function, please refer to the code
+documentation of each of them.</p>
+<p>A few examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span><span class="o">.</span><span class="n">gen_dipole_dipole</span><span class="p">(</span><span class="n">skipc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">configs</span><span class="o">.</span><span class="n">gen_gradient</span><span class="p">(</span><span class="n">skip</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vskip</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The configurations are returned by the functions as a Nx4 numpy array, but are
+also directly added to the internal configuration array, which can be accessed
+as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span><span class="o">.</span><span class="n">configs</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Explain the additional configuration functions, e.g., reciprocals, etc.</p>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Explain how to plot pseudosections</p>
+</div>
+<p>There are various ways to save the configurations into a file:</p>
+<p>A four-column file is written using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span><span class="o">.</span><span class="n">write_configs</span><span class="p">(</span><span class="s1">&#39;configs.dat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A CRMod config.dat file is written using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span><span class="o">.</span><span class="n">write_crmod_config</span><span class="p">(</span><span class="s1">&#39;config.dat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A CRMod volt.dat file is written using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span><span class="o">.</span><span class="n">write_crmod_config</span><span class="p">(</span><span class="s1">&#39;config.dat&#39;</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, mid refers to the measurement-id for a given measurement.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CRTomo user manual</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../misc/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo/crtomo.html">CRTomo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_data_management.html">Data Management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating measurement configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_creating_models.html">Creating synthetic models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_forward_modelling.html">Forward modelling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_inversions.html">Inversion using the tdManager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developer information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorials.html">Tutorials</a><ul>
+      <li>Previous: <a href="00_data_management.html" title="previous chapter">Data Management</a></li>
+      <li>Next: <a href="03_creating_models.html" title="next chapter">Creating synthetic models</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../_sources/tutorials/01_measurement_configurations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

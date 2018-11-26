@@ -1,0 +1,85 @@
+.. CRTomo user manual documentation master file, created by
+   sphinx-quickstart on Mon Feb 20 10:17:50 2017.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to CRTomo user manual's documentation!
+==============================================
+
+:mod:`crtomo`
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   misc/installation.rst
+   crtomo/crtomo.rst
+   tutorials.rst
+   developers.rst
+   crtomo_tools/crtomo_tools.rst
+   crtomo_test/crtomo_test.rst
+
+.. todo::
+
+    import inversion tutorials
+
+.. todo::
+
+    jg: incorporate python requirements etc somewhere else
+
+Introduction
+------------
+
+The CRTomo-ecosystem is maintained in four repositories:
+
+* *crtomo*: the CRMod/CRTomo/CutMcK programs, written in the Fortran
+  programming language
+* *crtomo_tools*: user space tools that help with the various tasked associated
+  with using CRMod/CRTomo, such as grid creation, analysis of
+  modeling/inversion results, and plotting of various results. Mostly written
+  in the Python programming language.
+* *crtomo_doc*: this documentation. The documentation should provide links to
+  external literature, but should be self-contained in the way that novice
+  users should be able to install, configure, and use CRMod/CRTomo only by
+  reading this documentation.
+* *crtomo_test*: Test and use cases for CRTomo. This is part automatic test
+  suite, part manual storage location for 'interesting' use cases.
+
+We aim at full usability on both Linux and Windows operating systems.
+
+.. todo::
+
+    jg: add short general description of CRTomo
+
+History of CRTomo
+-----------------
+
+.. todo::
+
+    jg: add history; development history or general?
+
+Example blockdiagram
+--------------------
+
+.. blockdiag::
+    :scale: 110%
+
+    blockdiag workflow{
+        "data/frequencies" -> "batch file (.sh/.bat)";
+        "batch file (.sh/.bat)" -> "execution";
+        "execution" -> "output directory";
+        "output directory" -> "post processing";
+    }
+
+.. todo::
+
+    jg: move somewhere else? -> seems lost here
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

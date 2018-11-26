@@ -1,0 +1,278 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Generating sEIT forward models &#8212; crtomo tools 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Plot inversion results from a tomodir" href="../03_inversion_postprocessing/plot_01_inversion_results.html" />
+    <link rel="prev" title="Plot a potential distribution, computed with CRMod" href="plot_potentials.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-examples-01-modelling-plot-generate-seit-model-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="generating-seit-forward-models">
+<span id="sphx-glr-examples-01-modelling-plot-generate-seit-model-py"></span><h1>Generating sEIT forward models<a class="headerlink" href="#generating-seit-forward-models" title="Permalink to this headline">¶</a></h1>
+<p>The eit manager can be used to easily create forward models using different
+parameterizations.</p>
+<p>imports</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">crtomo</span>
+</pre></div>
+</div>
+<p>we need a FE grid</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <a href="../../api/crtomo.html#crtomo.crt_grid.create_surface_grid" title="View documentation for crtomo.crt_grid.create_surface_grid"><span class="n">crtomo</span><span class="o">.</span><span class="n">crt_grid</span><span class="o">.</span><span class="n">create_surface_grid</span></a><span class="p">(</span><span class="n">nr_electrodes</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">plot_grid</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_generate_seit_model_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_generate_seit_model_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>This grid was sorted using CutMcK. The nodes were resorted!
+Triangular grid found
+</pre></div>
+</div>
+<p>define frequencies</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">frequencies</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.logspace.html#numpy.logspace" title="View documentation for numpy.logspace"><span class="n">np</span><span class="o">.</span><span class="n">logspace</span></a><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># create the eit manager</span>
+<span class="n">eitman</span> <span class="o">=</span> <a href="../../api/crtomo.html#crtomo.eitMan" title="View documentation for crtomo.eitMan"><span class="n">crtomo</span><span class="o">.</span><span class="n">eitMan</span></a><span class="p">(</span><span class="n">frequencies</span><span class="o">=</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>start with a homogeneous complex resistivity distribution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eitman</span><span class="o">.</span><span class="n">add_homogeneous_model</span><span class="p">(</span><span class="n">magnitude</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">eitman</span><span class="o">.</span><span class="n">plot_forward_models</span><span class="p">(</span><span class="n">maglim</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="c1"># save to files</span>
+<span class="n">r</span><span class="p">[</span><span class="s1">&#39;rmag&#39;</span><span class="p">][</span><span class="s1">&#39;fig&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fwd_model_hom_rmag.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">r</span><span class="p">[</span><span class="s1">&#39;rpha&#39;</span><span class="p">][</span><span class="s1">&#39;fig&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fwd_model_hom_rpha.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="../../_images/sphx_glr_plot_generate_seit_model_002.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_generate_seit_model_002.png" />
+</li>
+<li><img alt="../../_images/sphx_glr_plot_generate_seit_model_003.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_generate_seit_model_003.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[0.001, 0.004641588833612777, 0.021544346900318832, 0.1, 0.46415888336127775, 2.154434690031882, 10.0, 46.41588833612773, 215.44346900318823, 1000.0]
+{&#39;rpha&#39;: {&#39;axes&#39;: array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe5cd1d0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fa18cb00&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe7d7ef0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe897320&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe8b0710&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe79c7f0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe7b4be0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe6ccfd0&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe6ec400&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe7037f0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe69bbe0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe6b4fd0&gt;]],
+      dtype=object), &#39;fig&#39;: &lt;Figure size 629.921x354.331 with 22 Axes&gt;}, &#39;rmag&#39;: {&#39;axes&#39;: array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe7cfa20&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe7c90f0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d250f4e0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d25078d0&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe602cc0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fe5d10f0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d235c4e0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d238f8d0&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d236acc0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d25360f0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03d254b4e0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f03fec26898&gt;]],
+      dtype=object), &#39;fig&#39;: &lt;Figure size 629.921x354.331 with 22 Axes&gt;}}
+</pre></div>
+</div>
+<p>now we can start parameterizing the subsurface</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eitman</span><span class="o">.</span><span class="n">set_area_to_single_colecole</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">eitman</span><span class="o">.</span><span class="n">plot_forward_models</span><span class="p">(</span><span class="n">maglim</span><span class="o">=</span><span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">110</span><span class="p">],</span> <span class="n">phalim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># save to files</span>
+<span class="n">r</span><span class="p">[</span><span class="s1">&#39;rmag&#39;</span><span class="p">][</span><span class="s1">&#39;fig&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fwd_model_par_rmag.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">r</span><span class="p">[</span><span class="s1">&#39;rpha&#39;</span><span class="p">][</span><span class="s1">&#39;fig&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fwd_model_par_rpha.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="../../_images/sphx_glr_plot_generate_seit_model_004.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_generate_seit_model_004.png" />
+</li>
+<li><img alt="../../_images/sphx_glr_plot_generate_seit_model_005.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_generate_seit_model_005.png" />
+</li>
+</ul>
+<p>add configurations</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">((</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">))</span>
+<span class="n">eitman</span><span class="o">.</span><span class="n">add_to_configs</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>conduct forward modeling</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eitman</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+<span class="n">measurements</span> <span class="o">=</span> <span class="n">eitman</span><span class="o">.</span><span class="n">measurements</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+attempting modeling
+reading voltages
+</pre></div>
+</div>
+<p>modeled SIP signatures can be retrieved as a dict:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sip_sigs</span> <span class="o">=</span> <span class="n">eitman</span><span class="o">.</span><span class="n">get_measurement_responses</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sip_sigs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(5, 7, 10, 8): &lt;reda.eis.plots.sip_response object at 0x7f03ca1f9dd8&gt;, (1, 3, 5, 4): &lt;reda.eis.plots.sip_response object at 0x7f03ca1f9ba8&gt;}
+</pre></div>
+</div>
+<p>plot modeled SIP signatures</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">eitman</span><span class="o">.</span><span class="n">get_measurement_responses</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;mod_sip_{}.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Extract SIP signature at one point from the forward model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sip_one_p</span> <span class="o">=</span> <span class="n">eitman</span><span class="o">.</span><span class="n">extract_points</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;forward_rmag&#39;</span><span class="p">,</span> <span class="s1">&#39;forward_rpha&#39;</span><span class="p">],</span>
+    <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.atleast_2d.html#numpy.atleast_2d" title="View documentation for numpy.atleast_2d"><span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span></a><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="p">)</span>
+
+<span class="c1"># import IPython</span>
+<span class="c1"># IPython.embed()</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  24.566 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modelling-plot-generate-seit-model-py">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_generate_seit_model.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_generate_seit_model.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_generate_seit_model.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_generate_seit_model.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">crtomo tools</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples for crtomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#examples-grid-handling">Examples: Grid handling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#examples-modelling">Examples: Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_sensitivity.html">Plotting sensitivities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_potentials.html">Plot a potential distribution, computed with CRMod</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Generating sEIT forward models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#examples-postprocessing-of-inversion-results">Examples: Postprocessing of inversion results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/grid_tools/modules.html">src</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">lib</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Examples for crtomo_tools</a><ul>
+      <li>Previous: <a href="plot_potentials.html" title="previous chapter">Plot a potential distribution, computed with CRMod</a></li>
+      <li>Next: <a href="../03_inversion_postprocessing/plot_01_inversion_results.html" title="next chapter">Plot inversion results from a tomodir</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/_examples/01_modelling/plot_generate_seit_model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

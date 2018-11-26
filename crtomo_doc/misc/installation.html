@@ -1,0 +1,327 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Installation &#8212; CRTomo user manual 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CRTomo" href="../crtomo/crtomo.html" />
+    <link rel="prev" title="Welcome to CRTomo user manual’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>Install a Python 3 environment, e.g.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Anaconda stack: <a class="reference external" href="https://www.continuum.io/downloads">https://www.continuum.io/downloads</a></li>
+<li>Enthought canopy: <a class="reference external" href="https://store.enthought.com/downloads/#default">https://store.enthought.com/downloads/#default</a></li>
+</ul>
+</div></blockquote>
+<p>and make sure the following packages are installed:</p>
+<blockquote>
+<div><ul class="simple">
+<li>numpy, matplotlib, pandas, sphinx</li>
+</ul>
+</div></blockquote>
+<p>For the case of missing packages you can either use conda (provided the
+Anaconda stack was installed)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">sphinx</span>
+</pre></div>
+</div>
+<p>or pip</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">sphinx</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-a-working-directory">
+<h3>Setup a working directory<a class="headerlink" href="#setup-a-working-directory" title="Permalink to this headline">¶</a></h3>
+<p>Create the directory: <em>C:\crtomo</em> and the following subdirectories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">C</span><span class="p">:</span>\\<span class="n">crtomo</span>\\<span class="nb">bin</span>
+<span class="o">*</span> <span class="n">C</span><span class="p">:</span>\\<span class="n">crtomo</span>\\<span class="n">git</span>
+</pre></div>
+</div>
+<p>The directory <em>C:\crtomo\bin</em> will contain executables whereas <em>C:\crtomo\git</em>
+is intended for the different git repositories of the CRTomo-ecosystem.
+For further information about git and the maintenance of the repositories please refer to the upcoming
+section.</p>
+</div>
+<div class="section" id="git">
+<h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<p>Install git <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a> and get yourself familiar with
+the following git commands:</p>
+<blockquote>
+<div><ul class="simple">
+<li>git clone</li>
+<li>git pull / git push</li>
+<li>git add</li>
+<li>git commit</li>
+<li>git branch</li>
+<li>git checkout</li>
+<li>git merge</li>
+</ul>
+</div></blockquote>
+<p>Simply clone the following repositories</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_doc</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_test</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_tools</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>into the corresponding folder <em>C:\crtomo\git</em>.</p>
+</div>
+<div class="section" id="gmsh">
+<h3>GMSH<a class="headerlink" href="#gmsh" title="Permalink to this headline">¶</a></h3>
+<p>Install gmsh: <a class="reference external" href="http://gmsh.info/">http://gmsh.info/</a> and copy the associated executable <em>gmsh.exe</em>
+to <em>C:\crtomo\bin</em>.</p>
+</div>
+<div class="section" id="compiling-crtomo-crmod-and-cutmck">
+<h3>Compiling CRTomo, CRMod and CutMcK<a class="headerlink" href="#compiling-crtomo-crmod-and-cutmck" title="Permalink to this headline">¶</a></h3>
+<p>For the compilation on Windows machines it is necessary to install MSYS2:
+<a class="reference external" href="https://www.msys2.org/">https://www.msys2.org/</a>. After the installation open the MSYS2 MinGW 64-bit
+console and install the following packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">Syu</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">Sy</span> <span class="n">pacman</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">git</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">automake</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">autoconf</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">mingw</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">gcc</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">mingw</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">toolchain</span>
+<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">make</span>
+</pre></div>
+</div>
+<p>Still in the console, clone the repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>into the home folder of the MSYS2 install (e.g. <em>C:\msys64\home</em>). Then change to
+the cloned directory and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">autogen</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Please make sure that line 25 in the file <em>configure.ac</em> writes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>AM_FC_FLAGS=”-static-libgcc -static”</li>
+</ul>
+</div></blockquote>
+<p>and then compile the files with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">host</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">mingw32</span>
+<span class="o">./</span><span class="n">make</span>
+</pre></div>
+</div>
+<p>The CRTomo and CRMod executables can then be found in the subdirectory <em>src</em>.
+The executable for CutMcK is located in the subdirectory <em>cutmckee</em>. Please
+rename the files in the following manner <em>crtomo.exe, crtmod.exe, cutmck.exe</em>
+and copy them to the corresponding directory <em>C:\crtomo\bin</em>.</p>
+</div>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">jg: add installation description for common linux distributions (debian, arch,
+suse, ?)</p>
+</div>
+<div class="section" id="id1">
+<h3>Python<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Install a Python 3 environment and make sure the following packages are installed:</p>
+<blockquote>
+<div><ul class="simple">
+<li>numpy, matplotlib, pandas, sphinx</li>
+</ul>
+</div></blockquote>
+<p>For the case of missing packages you can either use conda (provided the
+Anaconda stack was installed)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">sphinx</span>
+</pre></div>
+</div>
+<p>or pip</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">sphinx</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="virtualenv">
+<h3>Virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h3>
+<p>virtualenv is a tool to create isolated Python environments.
+Edit: How to install Virtualenv</p>
+<p>Creat a virtual environment</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkvirtualenv</span> <span class="o">--</span><span class="n">python</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="n">NAME</span>
+</pre></div>
+</div>
+<p>with <em>NAME</em> as the name of your virtual environment. For e.g. CRTomo tool you can set <em>NAME</em> to <em>crtomo</em> or for EDF to <em>edf</em>.
+Open your virtual environment with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">workon</span> <span class="o">*</span><span class="n">NAME</span><span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Setup a working directory<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Create the directory: <em>/home/USERNAME/crtomo</em> and subdirectories for the different git repositiries.</p>
+</div>
+<div class="section" id="id3">
+<h3>Git<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Install git and get yourself familiar with the following git commands:</p>
+<blockquote>
+<div><ul class="simple">
+<li>git clone</li>
+<li>git pull / git push</li>
+<li>git add</li>
+<li>git commit</li>
+<li>git branch</li>
+<li>git checkout</li>
+<li>git merge</li>
+</ul>
+</div></blockquote>
+<p>Simply clone the following repositories</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_doc</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_test</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_tools</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>into the corresponding folder <em>/home/USERNAME/crtomo</em>.</p>
+<p>For EDF/P4 clone the following repository (private from M. Weigand):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">mweigand</span><span class="o">/</span><span class="n">EDF</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>For SIP-models clone the following repository (private from M. Weigand):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">mweigand</span><span class="o">/</span><span class="n">sip_models</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-installation-of-edf-plus-crtomo-tools-and-sip-models">
+<h3>Example: Installation of EDF plus CRTomo tools and SIP-models<a class="headerlink" href="#example-installation-of-edf-plus-crtomo-tools-and-sip-models" title="Permalink to this headline">¶</a></h3>
+<p>First, install Python and mkvirtualenv as described above. Second, install git and clone the following repositories</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_doc</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">crtomo</span><span class="o">/</span><span class="n">crtomo_tools</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">mweigand</span><span class="o">/</span><span class="n">EDF</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">uni</span><span class="o">-</span><span class="n">bonn</span><span class="o">.</span><span class="n">de</span><span class="p">:</span><span class="mi">4422</span><span class="o">/</span><span class="n">mweigand</span><span class="o">/</span><span class="n">sip_models</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Go to the EDF directory <em>…crtomoEDF</em> and create the work environment (named <em>edf</em>) using the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkvirtualenv</span> <span class="o">--</span><span class="n">python</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span> <span class="n">edf</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+<span class="n">workon</span> <span class="n">edf</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">ipython</span>
+</pre></div>
+</div>
+<p>In addition, install CRTomo tools in your environment. Got to the CRTomo tools directory <em>…crtomocrtomo_tools</em> and use the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>You should also install SIP-models tools in your environment. Got to the SIP-models directory <em>…crtomosip_models</em> and use the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pip</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">shapely</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CRTomo user manual</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo/crtomo.html">CRTomo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developer information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to CRTomo user manual’s documentation!</a></li>
+      <li>Next: <a href="../crtomo/crtomo.html" title="next chapter">CRTomo</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../_sources/misc/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

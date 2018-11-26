@@ -1,0 +1,146 @@
+Repositories
+------------
+
+For internal projects, use out Gitlab-server:
+https://gitlab.geo.uni-bonn.de:4443/users/sign_in
+
+Python requirements
+-------------------
+
+ * We use Python 3.X for development.
+
+Virtualenvs/Virtualenv-wrapper
+------------------------------
+
+Introduce yourself to virtualenv-wrapper, learn the basic handling.
+
+ * https://virtualenvwrapper.readthedocs.io/en/latest/
+ * (for reference https://virtualenv.pypa.io/en/stable/)
+
+Git requirements
+----------------
+
+Understand, and use, the following git commands:
+
+ * git clone
+ * git pull / git push
+ * git add
+ * git commit
+ * git branch
+ * git checkout
+ * git merge
+
+Git Literature
+^^^^^^^^^^^^^^
+
+ * https://try.github.io/levels/1/challenges/1
+ * http://git-scm.com/book
+ * http://www.ralfebert.de/tutorials/git/
+ * http://www-cs-students.stanford.edu/~blynn/gitmagic/
+
+Software Development using Python
+---------------------------------
+
+ * Use setuptools to create an installation routine
+   (https://setuptools.readthedocs.io/en/latest/setuptools.html)
+
+ * Python Koans: https://github.com/gregmalcolm/python_koans
+ * Never, ever, overwrite data in variables: ::
+
+       data = np.random.rand(10)
+       # DO NOT
+       # data = data + 1.53
+
+       # instead create a new variable
+       data_w_offset = data + 1.53
+
+ * Use GIT for all software projects, even small ones!
+ * Generated data usually does NOT belong into git repositories.
+
+  * Put scripts to generate the data into the GIT rep.
+  * git-annex can be used to manage large data files in git-repositories:
+
+   * http://git-annex.branchable.com/
+
+ * Use Python 3.4 or newer
+
+  * Make use of the ipython notebook (http://ipython.org/documentation.html)
+
+ * Follow the PEP8 style guide (http://www.python.org/dev/peps/pep-0008/)
+
+  * The program 'pep8' checks .py files for pep8-errors (apt-get install pep8)
+  * Use 4 spaces instead of TAB (can be set in most editors, otherwise: use
+    another editor)
+  * maximum 79 characters per line
+  * Each executable script should start with "!#/usr/bin/python"
+
+   * make executable with "chmod +x SCRIPT.py"
+   * execute with ./SCRIPT.py
+
+ * Bookmark the documentations for the following packages (local version can
+   often be found in /usr/share/doc/python-XXX)
+
+  * Python (http://docs.python.org/2/)
+  * IPython (http://ipython.org/documentation.html)
+  * Matplotlib (http://matplotlib.org/contents.html)
+  * Numpy (http://docs.scipy.org/doc/)
+  * Scipy (http://docs.scipy.org/doc/)
+  * Pandas (http://pandas.pydata.org/pandas-docs/stable/)
+  * Nosetests (https://nose.readthedocs.org/en/latest/)
+
+ * Decide on the project language in the beginning and stick to it!
+
+  * English is the preferred language to comment and document your software
+
+ * Create working examples for your software in a 'examples/' subdirectory.
+
+  * These examples are directed to new users who want to learn how to use the
+    software in general or how to use specific features.
+
+ * Create working test cases for your software in a 'tests/' subdirectory.
+
+  * Tests should cover most of the features (large and small)
+  * Tests can be automated using 'nosetests'
+    https://nose.readthedocs.org/en/latest/
+
+ * Create a documentation subdirectory 'docs' right at the beginning
+
+  * Use 'sphinx' (http://sphinx-doc.org/) for the documentation
+
+   * http://sphinx-doc.org/tutorial.html
+
+  * Document all functions
+  * Documentating early and extensive has multiple advantages
+
+   * Re-use text for publications/thesis
+   * Structure the development phase
+   * A central place to store notes and todos
+   * sections to include in your documentation:
+
+    * Installation
+    * Quick start guide
+    * Usage
+    * Implemented formulas
+    * TODO-List
+    * Literature (include links to PDF files if available), put PDF files in a
+      directoy 'literature'
+    * Design-sketches (flow-charts)
+    * Code (can be automatically included by sphinx)
+
+   * A 'docs' subdirectory could have the following subdirectories:
+
+    * literature/ <- put PDF  files in here
+    * doc/   <- put sphinxs documentation in here
+    * <- add new subdirectories for all notes and additional documentation
+
+ * Create only small functions (~1 screen page long) with only one purpose
+ * NEVER ever start your variables with "my"!
+ * Plan your program on paper before you start to write code
+
+  * Use pseudocode
+  * Flow-charts really help to understand the problem
+
+ * If possible give the code to a colleage in regular intervals for a code
+   review
+ * See http://infinitemonkeycorps.net/docs/pph/ for a whole tutorial on Python
+   project management

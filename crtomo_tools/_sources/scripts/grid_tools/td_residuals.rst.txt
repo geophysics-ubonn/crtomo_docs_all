@@ -1,0 +1,8 @@
+td\_residuals module
+====================
+
+.. automodule:: td_residuals
+    :members:
+    :private-members:
+    :undoc-members:
+    :show-inheritance:

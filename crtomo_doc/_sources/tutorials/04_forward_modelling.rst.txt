@@ -1,0 +1,127 @@
+Forward modelling
+-----------------
+
+Suppose you have a tomodir manager set up with a grid and some measurement
+configurations: ::
+
+    import crtomo.grid as CRGrid
+    grid = CRGrid.crt_grid.create_surface_grid(
+        nr_electrodes=30, spacing=1
+    )
+    import crtomo.tdManager as CRman
+    man = CRman.tdMan(grid=grid)
+    man.configs.gen_dipole_dipole(skipc=0)
+
+The forward modelling using CRMod can now be triggered by calling the function
+measurements()::
+
+    rmag_rpha = man.measurements()
+
+The function returns an Nx2 numpy array with the modelled magnitudes and phase
+values (both linear), but also directly registers the results as the magnitude
+and phase forward response in the tdManager. Corresponding measurement ids can
+be retreived from the assignment dict: ::
+
+    mid_mag, mid_pha = man.assignments['measurements']
+
+Geometric factors for equally spaced electrodes can simply be computed using::
+
+    K = man.configs.compute_K_factors(spacing=1)
+
+The function can also use a FE-grid to numerically compute geometric factors.
+Please refer to the API documentation for more information. Apparent
+resistivities can be computed and registered via: ::
+
+    K = man.configs.compute_K_factors(spacing=1)
+    rhoa = rmag_rpha[:, 0] * K
+    cid_rho = man.configs.add_measurements(rhoa)
+
+Pseudosections can then be plotted using: ::
+
+    plot_objects = man.configs.plot_pseudosection_type2(
+        mid_mag,
+        cblabel=r'$|Z|~[\Omega]$',
+    )
+    fig = plot_objects[0]
+    fig.savefig('pseudosection_mag.png', dpi=300)
+
+    plot_objects = man.configs.plot_pseudosection_type2(
+        mid_pha,
+        cblabel=r'$\phi~[mrad]$',
+    )
+    fig = plot_objects[0]
+    fig.savefig('pseudosection_pha.png', dpi=300)
+
+    plot_objects = man.configs.plot_pseudosection_type2(
+        cid_rho,
+        cblabel=r'$\rho_a~[\Omega m]$',
+    )
+    fig = plot_objects[0]
+    fig.savefig('pseudosection_rhoa.png', dpi=300)
+
+Magnitudes can also be plotted logarithmically by registering the log10 values
+in the configManager::
+
+    import numpy as np
+    maglog = np.log10(rmag_rpha[:, 0])
+    plot_objects = man.configs.plot_pseudosection_type2(
+        maglog,
+        cblabel=r'$log_{10}(|Z|~[\Omega])$',
+    )
+    fig = plot_objects[0]
+    fig.savefig('pseudosection_mag.png', dpi=300)
+
+.. plot::
+
+    import crtomo.mpl
+    plt, mpl = crtomo.mpl.setup()
+
+    import crtomo.grid as CRGrid
+    grid = CRGrid.crt_grid.create_surface_grid(
+        nr_electrodes=30, spacing=1
+    )
+    import crtomo.tdManager as CRman
+    man = CRman.tdMan(grid=grid)
+    pid_mag, pid_pha = man.add_homogeneous_model(magnitude=100, phase=-5)
+    man.parman.modify_area(pid_mag, 1, 5, -5, -2, value=10)
+    r = man.plotman.plot_elements_to_ax(
+        pid_mag,
+        title='Forward model',
+        plot_colorbar=True,
+        cblabel=r'$|\rho|~[\Omega m]$',
+    )
+    fig = r[0]
+    # fig.savefig('model_mag.png', dpi=300)
+    r = man.plotman.plot_elements_to_ax(
+        pid_pha,
+        title='Forward model',
+        plot_colorbar=True,
+        cblabel=r'$\phi~[mrad]$',
+    )
+    fig = r[0]
+    # fig.savefig('model_mag.png', dpi=300)
+    man.configs.gen_dipole_dipole(skipc=0)
+    rmag_rpha = man.measurements()
+    K = man.configs.compute_K_factors(spacing=1)
+    rhoa = rmag_rpha[:, 0] * K
+    cid_rho = man.configs.add_measurements(rhoa)
+    r = man.configs.plot_pseudosection_type2(
+        cid_rho,
+        cblabel=r'$\rho_a~[\Omega m]$',
+    )
+    import numpy as np
+    maglog = np.log10(rmag_rpha[:, 0])
+    cid = man.configs.add_measurements(maglog)
+    mid_mag, mid_pha = man.assignments['measurements']
+    r = man.configs.plot_pseudosection_type2(
+        mid_mag,
+        cblabel=r'$|Z|~[\Omega]$',
+    )
+    fig = r[0]
+    # fig.savefig('pseudosection_mag.png', dpi=300)
+
+    r = man.configs.plot_pseudosection_type2(
+        maglog,
+        cblabel=r'$log_{10}(|Z|~[\Omega])$',
+    )
+

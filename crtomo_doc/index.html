@@ -1,0 +1,196 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to CRTomo user manual’s documentation! &#8212; CRTomo user manual 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="misc/installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-crtomo-user-manual-s-documentation">
+<h1>Welcome to CRTomo user manual’s documentation!<a class="headerlink" href="#welcome-to-crtomo-user-manual-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="../crtomo_tools/doc/_build/html/api/crtomo.html#module-crtomo" title="(in crtomo tools v0.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crtomo</span></code></a></p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc/installation.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/installation.html#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="crtomo/crtomo.html">CRTomo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="crtomo/basics.html">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crtomo/basics.html#advanced-usage">Advanced usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crtomo/files.html">Files and directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crtomo/best_practices.html">Configuration checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crtomo/best_practices.html#standard-inversion-schemes">Standard inversion schemes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/00_data_management.html">Data Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/01_measurement_configurations.html">Creating measurement configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/03_creating_models.html">Creating synthetic models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/04_forward_modelling.html">Forward modelling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/05_inversions.html">Inversion using the tdManager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc/style_guide.html">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/style_guide.html#python-requirements">Python requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/style_guide.html#virtualenvs-virtualenv-wrapper">Virtualenvs/Virtualenv-wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/style_guide.html#git-requirements">Git requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc/style_guide.html#software-development-using-python">Software Development using Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">import inversion tutorials</p>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">jg: incorporate python requirements etc somewhere else</p>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The CRTomo-ecosystem is maintained in four repositories:</p>
+<ul class="simple">
+<li><em>crtomo</em>: the CRMod/CRTomo/CutMcK programs, written in the Fortran
+programming language</li>
+<li><em>crtomo_tools</em>: user space tools that help with the various tasked associated
+with using CRMod/CRTomo, such as grid creation, analysis of
+modeling/inversion results, and plotting of various results. Mostly written
+in the Python programming language.</li>
+<li><em>crtomo_doc</em>: this documentation. The documentation should provide links to
+external literature, but should be self-contained in the way that novice
+users should be able to install, configure, and use CRMod/CRTomo only by
+reading this documentation.</li>
+<li><em>crtomo_test</em>: Test and use cases for CRTomo. This is part automatic test
+suite, part manual storage location for ‘interesting’ use cases.</li>
+</ul>
+<p>We aim at full usability on both Linux and Windows operating systems.</p>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">jg: add short general description of CRTomo</p>
+</div>
+</div>
+<div class="section" id="history-of-crtomo">
+<h2>History of CRTomo<a class="headerlink" href="#history-of-crtomo" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">jg: add history; development history or general?</p>
+</div>
+</div>
+<div class="section" id="example-blockdiagram">
+<h2>Example blockdiagram<a class="headerlink" href="#example-blockdiagram" title="Permalink to this headline">¶</a></h2>
+<div><a class="reference internal image-reference" href="_images/blockdiag-998434789311e399b3069c68eb3d4d82ffb47c29.png"><img height="132.0" src="_images/blockdiag-998434789311e399b3069c68eb3d4d82ffb47c29.png" width="1126.4" /></a></div><div class="admonition-todo admonition" id="index-4">
+<p class="first admonition-title">Todo</p>
+<p class="last">jg: move somewhere else? -&gt; seems lost here</p>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">CRTomo user manual</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crtomo/crtomo.html">CRTomo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developer information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="misc/installation.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

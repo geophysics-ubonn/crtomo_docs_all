@@ -1,0 +1,8 @@
+grid\_extralines\_gen\_decouplings module
+=========================================
+
+.. automodule:: grid_extralines_gen_decouplings
+    :members:
+    :private-members:
+    :undoc-members:
+    :show-inheritance:

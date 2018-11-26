@@ -1,0 +1,213 @@
+Installation
+============
+
+Windows
+-------
+
+Python
+^^^^^^
+
+Install a Python 3 environment, e.g.
+
+     * Anaconda stack: https://www.continuum.io/downloads
+     * Enthought canopy: https://store.enthought.com/downloads/#default
+
+and make sure the following packages are installed:
+  
+     * numpy, matplotlib, pandas, sphinx
+
+For the case of missing packages you can either use conda (provided the
+Anaconda stack was installed) ::
+
+      conda install numpy matplotlib scipy pandas sphinx
+
+or pip ::
+
+      pip install numpy matplotlib scipy pandas sphinx
+
+Setup a working directory
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create the directory: *C:\\crtomo* and the following subdirectories::
+
+     * C:\\crtomo\\bin
+     * C:\\crtomo\\git
+
+The directory *C:\\crtomo\\bin* will contain executables whereas *C:\\crtomo\\git*
+is intended for the different git repositories of the CRTomo-ecosystem.
+For further information about git and the maintenance of the repositories please refer to the upcoming
+section. 
+
+Git
+^^^
+
+Install git https://git-scm.com/download/win and get yourself familiar with
+the following git commands:
+
+     * git clone
+     * git pull / git push
+     * git add
+     * git commit
+     * git branch
+     * git checkout 
+     * git merge
+
+Simply clone the following repositories ::
+
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_doc.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_test.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_tools.git
+
+into the corresponding folder *C:\\crtomo\\git*.
+
+GMSH
+^^^^
+
+Install gmsh: http://gmsh.info/ and copy the associated executable *gmsh.exe*
+to *C:\\crtomo\\bin*.
+
+Compiling CRTomo, CRMod and CutMcK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For the compilation on Windows machines it is necessary to install MSYS2:
+https://www.msys2.org/. After the installation open the MSYS2 MinGW 64-bit
+console and install the following packages: ::
+
+    pacman -Syu
+    pacman -Sy pacman
+    pacman -S git
+    pacman -S automake
+    pacman -S autoconf
+    pacman -S mingw-w64-x86_64-gcc
+    pacman -S mingw-w64-x86_64-toolchain
+    pacman -S make
+
+Still in the console, clone the repository ::
+    
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo.git
+
+into the home folder of the MSYS2 install (e.g. *C:\\msys64\\home*). Then change to
+the cloned directory and run ::
+  
+    ./autogen.sh
+
+Please make sure that line 25 in the file *configure.ac* writes: 
+
+    * AM_FC_FLAGS="-static-libgcc -static"
+
+and then compile the files with: ::
+
+    ./configure --host=x86_64-w64-mingw32
+    ./make
+
+The CRTomo and CRMod executables can then be found in the subdirectory *src*.
+The executable for CutMcK is located in the subdirectory *cutmckee*. Please
+rename the files in the following manner *crtomo.exe, crtmod.exe, cutmck.exe*
+and copy them to the corresponding directory *C:\\crtomo\\bin*. 
+
+Linux
+-----
+
+.. todo::
+
+    jg: add installation description for common linux distributions (debian, arch,
+    suse, ?)
+
+Python
+^^^^^^
+
+Install a Python 3 environment and make sure the following packages are installed:
+  
+     * numpy, matplotlib, pandas, sphinx
+
+For the case of missing packages you can either use conda (provided the
+Anaconda stack was installed) ::
+
+      conda install numpy matplotlib scipy pandas sphinx
+
+or pip ::
+
+      pip install numpy matplotlib scipy pandas sphinx
+
+Virtualenv
+^^^^^^^^^^
+
+virtualenv is a tool to create isolated Python environments.
+Edit: How to install Virtualenv
+
+Creat a virtual environment ::
+
+	mkvirtualenv --python /usr/bin/python3 NAME
+
+with *NAME* as the name of your virtual environment. For e.g. CRTomo tool you can set *NAME* to *crtomo* or for EDF to *edf*.
+Open your virtual environment with ::
+
+	workon *NAME*
+
+Setup a working directory
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create the directory: */home/USERNAME/crtomo* and subdirectories for the different git repositiries.
+
+Git
+^^^
+
+Install git and get yourself familiar with the following git commands:
+
+     * git clone
+     * git pull / git push
+     * git add
+     * git commit
+     * git branch
+     * git checkout 
+     * git merge
+
+Simply clone the following repositories ::
+
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_doc.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_test.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_tools.git
+
+into the corresponding folder */home/USERNAME/crtomo*.
+
+For EDF/P4 clone the following repository (private from M. Weigand)::
+
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/mweigand/EDF.git
+
+For SIP-models clone the following repository (private from M. Weigand)::
+
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/mweigand/sip_models.git
+
+Example: Installation of EDF plus CRTomo tools and SIP-models
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+First, install Python and mkvirtualenv as described above. Second, install git and clone the following repositories ::
+
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_doc.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/crtomo/crtomo_tools.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/mweigand/EDF.git
+    git clone ssh://git@ssh.geo.uni-bonn.de:4422/mweigand/sip_models.git
+
+Go to the EDF directory *...\crtomo\EDF* and create the work environment (named *edf*) using the following commands: ::
+
+	mkvirtualenv --python /usr/bin/python3 edf
+	pip install --upgrade pip
+	workon edf
+	pip install -r requirements.txt
+	pip install ipython
+
+In addition, install CRTomo tools in your environment. Got to the CRTomo tools directory *...\crtomo\crtomo_tools* and use the following commands: ::
+
+	pip install -r requirements.txt
+	python setup.py install
+
+You should also install SIP-models tools in your environment. Got to the SIP-models directory *...\crtomo\sip_models* and use the following commands: ::
+
+	pip install -U pip
+    	pip install -U numpy matplotlib scipy pandas shapely
+	pip install -r requirements.txt
+	python setup.py install
+	

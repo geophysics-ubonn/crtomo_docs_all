@@ -1,0 +1,8 @@
+volt\_histogram module
+======================
+
+.. automodule:: volt_histogram
+    :members:
+    :private-members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,226 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Data Management &#8212; CRTomo user manual 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating measurement configurations" href="01_measurement_configurations.html" />
+    <link rel="prev" title="Tutorials" href="../tutorials.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="data-management">
+<h1>Data Management<a class="headerlink" href="#data-management" title="Permalink to this headline">¶</a></h1>
+<p>This section presents various aspects of preparation and data management
+techniques that should be followed during measurements.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the future this section should be moved somewhere outside of the
+crtomo_doc manual, but for now this seems like a good place.</p>
+</div>
+<p>Directory structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+└── [CAMPAIGN_NAME]
+        ├── Documenation
+        ├── EIT
+        │   ├── 20170710
+        │   │   ├── p_01
+        │   │   │   ├── Documentation
+        │   │   │   ├── m_01_1005
+        │   │   │   │   ├── Analysis
+        │   │   │   │   ├── Data
+        │   │   │   │   ├── Documentation
+        │   │   │   │   ├── Pictures
+        │   │   │   │   └── Readme.txt
+        │   │   │   └── m_02_1305
+        │   │   │       ├── Analysis
+        │   │   │       ├── Data
+        │   │   │       ├── Documentation
+        │   │   │       ├── Pictures
+        │   │   │       └── Readme.txt
+        │   │   └── p_02
+        │   │       ├── Documentation
+        │   │       └── m_01_1503
+        │   │           ├── Analysis
+        │   │           ├── Data
+        │   │           ├── Documentation
+        │   │           ├── Pictures
+        │   │           └── Readme.txt
+        │   └── Documentation
+        └── Readme.txt
+</pre></div>
+</div>
+<p>Readme structure::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[general]
+date = 20170710
+time = 1005
+person_responsible = Maximilian Weigand
+person_email = mweigand@geo.uni-bonn.de
+attending_persons = Micky Maus, Goofy
+site = Dollendorf
+area = S7
+profile = profile 1
+keywords = landslide,CMM slide
+description_short = One sentence explanation
+description = Put a comprehensive explanation of the experiment here. This
+    explanation can span multiple lines!
+measurement_type = EIT
+survey_type = field
+problems =
+    Describe any problems during the measurements here
+missing =
+    Are any information missing? It&#39;s better to note problems here than to
+    ignore them!
+restrictions =
+    How can we use the data? If data is measured in the Department of
+    Geophysics, leave this field blank. Otherwise note the owner and any known
+    usage rights.
+</pre></div>
+</div>
+<div class="section" id="preparing-the-measurements">
+<h2>Preparing the measurements<a class="headerlink" href="#preparing-the-measurements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Make a rough plan of the analysis procedures<ul>
+<li>Which environment variables do you need to measure/capture?</li>
+<li>How do your expected final results look like? Which plots comprise the
+final results?</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="during-the-measurements">
+<h2>During the measurements<a class="headerlink" href="#during-the-measurements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Create sketches of the field site/laboratory setup containing
+electrodes, electrode numbers, (if possible: topography), and all other
+important objects/features (note also possible sources of error, e.g. cars or
+other metallic stuff)</li>
+</ul>
+</div>
+<div class="section" id="after-the-measurements">
+<h2>After the measurements<a class="headerlink" href="#after-the-measurements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Sort (and backup) data files.</li>
+<li>Create <code class="docutils literal notranslate"><span class="pre">Readme.txt</span></code> files containing all important information (and/or
+references to additional documents).</li>
+<li>Create text files containing electrode positions (x, z), z direction points
+upwards (topography).</li>
+<li>Make a list of the data sets you want to process, i.e. which data
+sets to process individually and which to process together (e.g.
+normal-reciprocals).</li>
+<li>Create the FE-grids for the subsequent analysis. Sometimes it is advisable to
+create a fine and a coarse grid. Initial data processing can be done using
+the coarse grid to save time.</li>
+<li>Inspect the data and set filters.</li>
+<li>Run preliminary inversions.</li>
+<li>Make sure that you don’t have too large normal-reciprocal differences (not
+only in absolute, but also in relative values).</li>
+<li>Regarding merged data sets: It is advisable to only use them if only
+normal-reciprocal pairs are used. Otherwise its possible that spectra get
+distored when only parts of the spectra are merged (i.e. averaged).</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CRTomo user manual</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../misc/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo/crtomo.html">CRTomo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_measurement_configurations.html">Creating measurement configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_creating_models.html">Creating synthetic models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_forward_modelling.html">Forward modelling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_inversions.html">Inversion using the tdManager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developer information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_tools/crtomo_tools.html">CRTomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crtomo_test/crtomo_test.html">CRTomo_test</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../tutorials.html">Tutorials</a><ul>
+      <li>Previous: <a href="../tutorials.html" title="previous chapter">Tutorials</a></li>
+      <li>Next: <a href="01_measurement_configurations.html" title="next chapter">Creating measurement configurations</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../_sources/tutorials/00_data_management.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

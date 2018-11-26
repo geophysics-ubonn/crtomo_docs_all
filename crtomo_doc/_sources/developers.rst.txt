@@ -1,0 +1,7 @@
+Developer information
+=====================
+
+.. toctree::
+   :maxdepth: 2
+
+   misc/style_guide.rst

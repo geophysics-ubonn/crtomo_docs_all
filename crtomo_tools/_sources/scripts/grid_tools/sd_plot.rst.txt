@@ -1,0 +1,8 @@
+sd\_plot module
+===============
+
+.. automodule:: sd_plot
+    :members:
+    :private-members:
+    :undoc-members:
+    :show-inheritance:

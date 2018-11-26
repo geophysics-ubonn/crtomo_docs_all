@@ -1,0 +1,11 @@
+Tutorials
+---------
+
+.. toctree::
+   :maxdepth: 2
+
+   tutorials/00_data_management.rst
+   tutorials/01_measurement_configurations.rst
+   tutorials/03_creating_models.rst
+   tutorials/04_forward_modelling.rst
+   tutorials/05_inversions.rst

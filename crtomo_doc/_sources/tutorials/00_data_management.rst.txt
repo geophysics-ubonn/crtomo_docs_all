@@ -1,0 +1,111 @@
+Data Management
+---------------
+
+This section presents various aspects of preparation and data management
+techniques that should be followed during measurements.
+
+
+.. note::
+
+    In the future this section should be moved somewhere outside of the
+    crtomo_doc manual, but for now this seems like a good place.
+
+Directory structure: ::
+
+	.
+	└── [CAMPAIGN_NAME]
+		├── Documenation
+		├── EIT
+		│   ├── 20170710
+		│   │   ├── p_01
+		│   │   │   ├── Documentation
+		│   │   │   ├── m_01_1005
+		│   │   │   │   ├── Analysis
+		│   │   │   │   ├── Data
+		│   │   │   │   ├── Documentation
+		│   │   │   │   ├── Pictures
+		│   │   │   │   └── Readme.txt
+		│   │   │   └── m_02_1305
+		│   │   │       ├── Analysis
+		│   │   │       ├── Data
+		│   │   │       ├── Documentation
+		│   │   │       ├── Pictures
+		│   │   │       └── Readme.txt
+		│   │   └── p_02
+		│   │       ├── Documentation
+		│   │       └── m_01_1503
+		│   │           ├── Analysis
+		│   │           ├── Data
+		│   │           ├── Documentation
+		│   │           ├── Pictures
+		│   │           └── Readme.txt
+		│   └── Documentation
+		└── Readme.txt
+
+
+Readme structure:::
+
+    [general]
+    date = 20170710
+    time = 1005
+    person_responsible = Maximilian Weigand
+    person_email = mweigand@geo.uni-bonn.de
+    attending_persons = Micky Maus, Goofy
+    site = Dollendorf
+    area = S7
+    profile = profile 1
+    keywords = landslide,CMM slide
+    description_short = One sentence explanation
+    description = Put a comprehensive explanation of the experiment here. This
+        explanation can span multiple lines!
+    measurement_type = EIT
+    survey_type = field
+    problems =
+        Describe any problems during the measurements here
+    missing =
+        Are any information missing? It's better to note problems here than to
+        ignore them!
+    restrictions =
+        How can we use the data? If data is measured in the Department of
+        Geophysics, leave this field blank. Otherwise note the owner and any known
+        usage rights.
+
+Preparing the measurements
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Make a rough plan of the analysis procedures
+
+  * Which environment variables do you need to measure/capture?
+  * How do your expected final results look like? Which plots comprise the
+    final results?
+
+
+During the measurements
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* Create sketches of the field site/laboratory setup containing
+  electrodes, electrode numbers, (if possible: topography), and all other
+  important objects/features (note also possible sources of error, e.g. cars or
+  other metallic stuff)
+
+After the measurements
+^^^^^^^^^^^^^^^^^^^^^^
+
+* Sort (and backup) data files.
+* Create ``Readme.txt`` files containing all important information (and/or
+  references to additional documents).
+* Create text files containing electrode positions (x, z), z direction points
+  upwards (topography).
+* Make a list of the data sets you want to process, i.e. which data
+  sets to process individually and which to process together (e.g.
+  normal-reciprocals).
+* Create the FE-grids for the subsequent analysis. Sometimes it is advisable to
+  create a fine and a coarse grid. Initial data processing can be done using
+  the coarse grid to save time.
+* Inspect the data and set filters.
+* Run preliminary inversions.
+* Make sure that you don't have too large normal-reciprocal differences (not
+  only in absolute, but also in relative values).
+* Regarding merged data sets: It is advisable to only use them if only
+  normal-reciprocal pairs are used. Otherwise its possible that spectra get
+  distored when only parts of the spectra are merged (i.e. averaged).

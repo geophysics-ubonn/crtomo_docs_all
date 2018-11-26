@@ -1,0 +1,8 @@
+grid\_plot\_wireframe module
+============================
+
+.. automodule:: grid_plot_wireframe
+    :members:
+    :private-members:
+    :undoc-members:
+    :show-inheritance:

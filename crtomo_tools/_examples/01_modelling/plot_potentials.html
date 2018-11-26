@@ -1,0 +1,198 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Plot a potential distribution, computed with CRMod &#8212; crtomo tools 0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Generating sEIT forward models" href="plot_generate_seit_model.html" />
+    <link rel="prev" title="Plotting sensitivities" href="plot_sensitivity.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-examples-01-modelling-plot-potentials-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="plot-a-potential-distribution-computed-with-crmod">
+<span id="sphx-glr-examples-01-modelling-plot-potentials-py"></span><h1>Plot a potential distribution, computed with CRMod<a class="headerlink" href="#plot-a-potential-distribution-computed-with-crmod" title="Permalink to this headline">¶</a></h1>
+<p>create a tomodir object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">crtomo</span>
+<span class="n">grid</span> <span class="o">=</span> <a href="../../api/crtomo.html#crtomo.crt_grid" title="View documentation for crtomo.crt_grid"><span class="n">crtomo</span><span class="o">.</span><span class="n">crt_grid</span></a><span class="p">(</span><span class="s1">&#39;grid_surface/elem.dat&#39;</span><span class="p">,</span> <span class="s1">&#39;grid_surface/elec.dat&#39;</span><span class="p">)</span>
+<span class="n">td</span> <span class="o">=</span> <a href="../../api/crtomo.html#crtomo.tdMan" title="View documentation for crtomo.tdMan"><span class="n">crtomo</span><span class="o">.</span><span class="n">tdMan</span></a><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>This grid was sorted using CutMcK. The nodes were resorted!
+Triangular grid found
+</pre></div>
+</div>
+<p>define configurations</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">td</span><span class="o">.</span><span class="n">configs</span><span class="o">.</span><span class="n">add_to_configs</span><span class="p">(</span>
+    <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">((</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>add a homogeneous forward model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">td</span><span class="o">.</span><span class="n">add_homogeneous_model</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>compute FEM solution using CRMod</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">td</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">potentials</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>attempting modeling
+reading voltages
+reading potentials
+</pre></div>
+</div>
+<p>plot first quadrupole</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pot_mag</span><span class="p">,</span> <span class="n">pot_pha</span> <span class="o">=</span> <span class="n">td</span><span class="o">.</span><span class="n">get_potential</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># add node data to the parameter manager</span>
+<span class="n">nid</span> <span class="o">=</span> <span class="n">td</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">pot_mag</span><span class="p">)</span>
+<span class="c1"># TODO: is this the phase, or imaginary part of the potential?</span>
+<span class="n">nid_pha</span> <span class="o">=</span> <span class="n">td</span><span class="o">.</span><span class="n">nodeman</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">pot_pha</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span> <span class="o">/</span> <span class="mf">2.54</span><span class="p">,</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">2.54</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">td</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_nodes_pcolor_to_ax</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">nid</span><span class="p">,</span>
+    <span class="n">plot_colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># td.plot.plot_nodes_contour_to_ax(</span>
+<span class="c1">#     ax, nid,</span>
+<span class="c1">#     plot_colorbar=True,</span>
+
+<span class="c1"># )</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">td</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_nodes_pcolor_to_ax</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">nid_pha</span><span class="p">,</span>
+    <span class="n">plot_colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;test.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_potentials_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_potentials_001.png" />
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-modelling-plot-potentials-py">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_potentials.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_potentials.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_potentials.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_potentials.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">crtomo tools</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples for crtomo_tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#examples-grid-handling">Examples: Grid handling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#examples-modelling">Examples: Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_sensitivity.html">Plotting sensitivities</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Plot a potential distribution, computed with CRMod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_generate_seit_model.html">Generating sEIT forward models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#examples-postprocessing-of-inversion-results">Examples: Postprocessing of inversion results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/grid_tools/modules.html">src</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">lib</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Examples for crtomo_tools</a><ul>
+      <li>Previous: <a href="plot_sensitivity.html" title="previous chapter">Plotting sensitivities</a></li>
+      <li>Next: <a href="plot_generate_seit_model.html" title="next chapter">Generating sEIT forward models</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, CRTomo contributors.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/_examples/01_modelling/plot_potentials.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
